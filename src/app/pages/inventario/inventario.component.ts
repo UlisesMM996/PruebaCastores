@@ -31,7 +31,7 @@ export class InventarioComponent {
       return
     }
     try{
-      this.http.post('http://localhost:3000/updatestock', {id: this.productoSeleccionado.productoid, stock: this.stock}).subscribe((element: any)=>{
+      this.http.post('http://localhost:3000/updatestock', {id: this.productoSeleccionado.productoid, stock: this.stock, precio: this.productoSeleccionado.precio * this.stock, usuario: localStorage.getItem('usuarioid')}).subscribe((element: any)=>{
         if(element.status == 200){
           alert(element.message)
           this.productoSeleccionado = null;
