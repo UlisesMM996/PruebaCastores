@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+<div style="width: 100%; height: 100%; padding: 4rem 1rem 1rem 1rem">
+    <h3 class="mt-2">Inventario de productos</h3>
+    <div *ngIf="rol == 1" class="box w-100 mt-4" style="display: flex; padding: 16px">    
+        <div style="width: 33%; padding: 5px;">
+            <p style="font-weight: 600;">Agregar nuevo producto</p>
+            <div class="w-100">
+                <input type="text" [(ngModel)]="descripcion" class="form-control" placeholder="Descripcion">
+            </div>
+            <div class="w-100 mt-2">
+                <input type="number" [(ngModel)]="precio" class="form-control" placeholder="Precio">
+            </div>
+           
+            <div class="mt-2 w-100">
+                <button class="btn btn-success w-100" (click)="saveProduct()">
+                    Agregar
+                </button>
+            </div>
+        </div>
+        <div *ngIf="productoSeleccionado" style="width: 66%; padding: 5px; border-left-style: solid; border-left-width: 1px; border-color: lightgray;">
+            <p style="font-weight: 600;">Agregar producto a stock</p>
+            <div style="width: 100%; display: flex; justify-content: end;">
+                <div style="width: 50%;">
+                    <div class="w-100">
+                        <input disabled type="text" [(ngModel)]="productoSeleccionado.descripcion" class="form-control" placeholder="Producto">
+                    </div>
+                    <div class="w-100 mt-2">
+                        <input disabled type="text" [(ngModel)]="productoSeleccionado.unidades" class="form-control" placeholder="Cantidad en stock">
+                    </div>
+                    <div class="w-100 mt-2">
+                        <input disabled type="text"  [(ngModel)]="productoSeleccionado.precio"  class="form-control" placeholder="Precio">
+                    </div>
+                </div>
+                <div style="width: 50%; margin-left: 5px;">
+                    <div class="w-100">
+                        <input  type="number" [(ngModel)]="stock" class="form-control" placeholder="Agregar cantidad a stock">
+                    </div>
+                    <div class="mt-2 w-100">
+                        <button class="btn btn-success w-100" (click)="agregarStock()">
+                            Añadir a stock
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box w-100 mt-4 table-bordered" style="margin-bottom: 2rem; display: flex; padding: 16px; flex-direction: column;">
+        <p style="font-weight: 600;">Productos en inventario</p>
+        <table class="table w-100">
+            <thead class="table-success">
+                <tr>
+                    <th>Clave</th>
+                    <th>Descripción</th>
+                    <th>Unidades en stock</th>
+                    <th>Precio</th>
+                    <th>Estatus</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of result" (click)="seleccionaProducto(producto)">
+                    <td>{{producto.productoid}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>{{producto.unidades}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.estatus == 1 ? 'Activo' : 'Inactivo'}}</td>
+                    <td (click)="$event.stopPropagation()">
+                        <div style="display: flex; justify-content: space-around;">
+                            <button *ngIf="producto.estatus != 1" type="button" class="btn btn-primary" (click)="updateEstatus({id: producto.productoid, estatus: 1})">Activar</button>
+                            <button *ngIf="producto.estatus == 1" type="button" class="btn btn-danger" (click)="updateEstatus({id: producto.productoid, estatus: 2})">Inactivar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

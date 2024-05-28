@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+<div style="width: 100%; height: 100%; padding: 4rem 1rem 1rem 1rem">
+    <h3 class="mt-2">Salida de producto</h3>
+    <div  class="box w-100 mt-4" style="display: flex; padding: 16px">
+        
+        <div style="width: 50%; padding: 5px;">
+            <p style="font-weight: 600;">Salida de producto</p>
+            <div class="w-100">
+                <input (keyup.enter)="buscaProducto()" [(ngModel)]="productoid" type="string"  class="form-control" placeholder="Buscar por id">
+            </div>
+            <div class="w-100 mt-2">
+                <input disabled type="text" [(ngModel)]="productoData.descripcion" class="form-control" placeholder="Descripcion del producto">
+            </div>
+            <div class="w-100 mt-2">
+                <input disabled type="text" [(ngModel)]="productoData.estatus" class="form-control" placeholder="Estatus del producto">
+            </div>
+        </div>
+        <div style="width: 50%; padding: 5px;">
+            <p style="font-weight: 600;">&nbsp;</p>
+            <div class="w-100 mt-2">
+                <input disabled type="number" [(ngModel)]="productoData.unidades" class="form-control" placeholder="Cantidad en stock">
+            </div>
+            <div class="w-100 mt-2">
+                <input disabled type="text" [(ngModel)]="productoData.precio" class="form-control" placeholder="Precio unitario">
+            </div>
+            <div class="w-100 mt-2">
+                <input  [(ngModel)]="cantidad" type="number" class="form-control" placeholder="Cantidad por salir">
+            </div>
+        </div>
+    </div>
+    <div class="w-100 mt-3" style="display: flex; justify-content: space-between;">
+        <button class="btn btn-primary w-25" (click)="addList()">
+            Agregar
+        </button>
+        <button class="btn btn-success w-25" (click)="saveSalida()">
+            Guardar
+        </button>
+    </div>
+    <div class="box w-100 mt-4 table-bordered" style="margin-bottom: 2rem; display: flex; padding: 16px; flex-direction: column;">
+        <p style="font-weight: 600;">Detalle de la salida</p>
+        <table class="table w-100">
+            <thead class="table-success">
+                <tr>
+                    <th>Clave</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Estatus</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of productosSalida">
+                    <td>{{item.productoid}}</td>
+                    <td>{{item.descripcion}}</td>
+                    <td>{{item.unidades}}</td>
+                    <td>{{item.precio}}</td>
+                    <td>{{item.estatus}}</td>
+                    <td (click)="$event.stopPropagation()">
+                        <div style="display: flex; justify-content: space-around;">
+                            <button  type="button" class="btn btn-danger">Remover</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

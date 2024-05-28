@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-light" style=" position: fixed; top: 0; left: 0; right: 0; background-color: #475c6c; padding-left: 1rem;">
+    <div style="display: flex; justify-content: space-between;" class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a style="color: whitesmoke;" class="nav-item nav-link active" href="/home">Home</a>
+        <a style="color: whitesmoke;" class="nav-item nav-link" href="/inventario">Inventario</a>
+        <a *ngIf="rol == 2" style="color: whitesmoke;" class="nav-item nav-link" href="/salidas">Salida de inventario</a>
+        <a style="color: whitesmoke;" class="nav-item nav-link" href="/historico">Historico</a>
+        <a style="color: whitesmoke;" class="nav-item nav-link" href="/login">Salir</a>
+      </div>
+      <div>
+        <a class="navbar-brand" style="color: whitesmoke;">{{usuario}}</a>
+      </div>
+    </div>
+  </nav>
