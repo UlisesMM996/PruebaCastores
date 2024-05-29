@@ -4,7 +4,7 @@
         <a style="color: whitesmoke;" class="nav-item nav-link active" href="/home">Home</a>
         <a style="color: whitesmoke;" class="nav-item nav-link" href="/inventario">Inventario</a>
         <a *ngIf="rol == 2" style="color: whitesmoke;" class="nav-item nav-link" href="/salidas">Salida de inventario</a>
-        <a style="color: whitesmoke;" class="nav-item nav-link" href="/historico">Historico</a>
+        <a *ngIf="rol == 1" style="color: whitesmoke;" class="nav-item nav-link" href="/historico">Historico</a>
         <a style="color: whitesmoke;" class="nav-item nav-link" href="/login">Salir</a>
       </div>
       <div>

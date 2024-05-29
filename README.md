@@ -1,5 +1,24 @@
 # ProyectoCastores
 
+Para ejecutar el proyecto es necesario seguir los siguientes pasos:
+
+1.Instalar NODE de manera global en el equipo de la siguiente pagina:
+https://nodejs.org/en/download/prebuilt-installer
+
+2.Lo siguiente será instalar Angular de manera global teniendo previamente instalado node
+ejecutar el siguiente comando: npm install -g @angular/cli
+
+3.El siguiente paso es descargar el proyecto de github por medio de un clone en la siguiente pagina: https://github.com/UlisesMM996/PruebaCastores
+
+4. Instalar las dependencias del proyecto por medio de la ejecución del siguiente comando:
+npm install --force
+
+5.Una vez instalados los paquetes del proyecto hay que ejecutar el comando ng serve
+para compilar y correr la aplicacion de Angular en el navegador, la aplicación se ejecuta por defecto en el puerto 4200
+
+NOTA: Para correr el proyecto es necesario tener corriendo la API rest. Para su ejecución se
+deberá de seguir los pasos contenidos en el archivo README.md similar a este
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
 ## Development server

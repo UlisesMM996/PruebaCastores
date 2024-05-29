@@ -54,7 +54,7 @@
                     <th>Unidades en stock</th>
                     <th>Precio</th>
                     <th>Estatus</th>
-                    <th>Acciones</th>
+                    <th *ngIf="rol == 1">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,7 +64,7 @@
                     <td>{{producto.unidades}}</td>
                     <td>{{producto.precio}}</td>
                     <td>{{producto.estatus == 1 ? 'Activo' : 'Inactivo'}}</td>
-                    <td (click)="$event.stopPropagation()">
+                    <td *ngIf="rol == 1" (click)="$event.stopPropagation()">
                         <div style="display: flex; justify-content: space-around;">
                             <button *ngIf="producto.estatus != 1" type="button" class="btn btn-primary" (click)="updateEstatus({id: producto.productoid, estatus: 1})">Activar</button>
                             <button *ngIf="producto.estatus == 1" type="button" class="btn btn-danger" (click)="updateEstatus({id: producto.productoid, estatus: 2})">Inactivar</button>
